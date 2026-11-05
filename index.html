@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px system-ui,-apple-system,'Segoe UI',sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Katrina Chen Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: paper-editorial site in menu courses; a centered menu card on a sunk table for home, asymmetric ruled splits for subpages */
+:root {
+  --bg: #fefef6; --sunk: #f3f4ee; --ink: #102d56; --ink2: #536883;
+  --line: #e2e5e3; --line2: #c9cfd3; --on-ink: #fefef6;
+  --display: 'Young Serif', Georgia, 'Times New Roman', serif;
+  --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #102d56; --sunk: #0c2546; --ink: #fefef6; --ink2: #9cbed3; --line: #24446b; --line2: #39587d; --on-ink: #102d56; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #102d56; --sunk: #0c2546; --ink: #fefef6; --ink2: #9cbed3; --line: #24446b; --line2: #39587d; --on-ink: #102d56; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; transition: background 300ms ease, color 300ms ease; }
+body[data-route="home"] { background: var(--sunk); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+img { display: block; max-width: 100%; height: auto; }
+.gut { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1180px; margin: 0 auto; }
+
+.bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 16px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; min-height: 44px; }
+.brand i { width: 28px; height: 28px; border-radius: 8px; background: var(--ink); color: var(--on-ink); display: flex; align-items: center; justify-content: center; font: normal 15px var(--display); }
+nav.primary { display: flex; flex-wrap: wrap; gap: 4px; font-size: 13.5px; }
+nav.primary a { text-decoration: none; color: var(--ink2); padding: 10px 14px; border-radius: 999px; }
+nav.primary a:hover { color: var(--ink); }
+nav.primary a[aria-current="page"] { color: var(--ink); background: var(--sunk); }
+body[data-route="home"] nav.primary a[aria-current="page"] { background: var(--bg); }
+
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink2); }
+.back { align-self: flex-start; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(48px, 7vw, 80px); line-height: 0.95; letter-spacing: -0.045em; text-wrap: balance; }
+.h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(30px, 4vw, 40px); line-height: 1.05; letter-spacing: -0.04em; }
+.lede { margin: 0; max-width: 580px; font-size: 18px; line-height: 1.65; color: var(--ink2); }
+.copy { margin: 0; font-size: 15px; line-height: 1.7; color: var(--ink2); }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--ink); color: var(--on-ink); text-decoration: none; font-size: 13px; border: none; cursor: pointer; font-family: var(--body); transition: transform 150ms ease; }
+.btn:active { transform: translateY(1px); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line2); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1px var(--ink2); }
+.btn.end { align-self: flex-end; }
+
+.page { display: flex; flex-direction: column; gap: 64px; padding-top: 40px; padding-bottom: 120px; }
+.page > .back { margin-bottom: -40px; }
+.split { display: flex; flex-wrap: wrap; gap: 32px 72px; }
+.side { flex: 1 1 260px; max-width: 300px; display: flex; flex-direction: column; gap: 12px; }
+.main { flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.ruled { border-top: 1px solid var(--ink); padding-top: 14px; }
+.hero { align-items: flex-end; }
+.hero .main { gap: 18px; }
+.ph { border-radius: 12px; background: var(--sunk); box-shadow: inset 0 0 0 1px var(--line); display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; box-sizing: border-box; font-size: 13px; color: var(--ink2); }
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { border-bottom: 1px solid var(--line); }
+.kv { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); margin: 0; }
+.kv dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink2); }
+.kv dd { margin: 0; font-size: 14px; text-align: right; }
+.step { display: flex; gap: 24px; padding: 18px 0; }
+.step b { flex: none; width: 32px; font: 400 11.5px var(--mono); color: var(--ink2); padding-top: 3px; }
+.step span { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.step strong { font-weight: 400; font-size: 17px; letter-spacing: -0.02em; }
+.step em { font-style: normal; font-size: 15px; line-height: 1.65; color: var(--ink2); }
+.ing { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; font-size: 14.5px; }
+.ing span + span { color: var(--ink2); text-align: right; }
+figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+figure img { border-radius: 12px; border: 1px solid var(--line); }
+figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content: space-between; gap: 12px; }
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+.shots.wide { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+.seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); }
+.seg a, .seg button { min-height: 38px; padding: 0 16px; border-radius: 999px; text-decoration: none; font: 400 13px var(--body); color: var(--ink2); display: inline-flex; align-items: center; border: none; background: transparent; cursor: pointer; }
+.seg [aria-current="page"], .seg [aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+.toprow { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: -32px; }
+
+/* home menu */
+.menu { max-width: 760px; margin: 64px auto 120px; padding: 8px; background: var(--bg); border: 1px solid var(--ink); border-radius: 22px; }
+.menu-in { border: 1px solid var(--line2); border-radius: 15px; padding: 64px 9% 56px; display: flex; flex-direction: column; gap: 56px; }
+.mast { text-align: center; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.mast .h1 { font-size: clamp(48px, 8vw, 72px); line-height: 1; }
+.orn { display: flex; align-items: center; gap: 10px; width: 160px; margin-top: 6px; }
+.orn span { flex: 1; border-top: 1px solid var(--ink); }
+.orn i { width: 5px; height: 5px; border: 1px solid var(--ink); transform: rotate(45deg); }
+.course { display: flex; flex-direction: column; gap: 6px; }
+.course-head { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; padding-bottom: 14px; margin-bottom: 8px; text-align: center; border-bottom: 1px dashed var(--ink); }
+.course-head .eyebrow { letter-spacing: 0.18em; }
+.course-head h2 { margin: 0; font: 400 32px var(--display); letter-spacing: -0.035em; }
+.dish { display: flex; flex-direction: column; gap: 4px; padding: 8px 0; text-decoration: none; }
+.menu-rule { border-top: 1px dashed var(--ink); margin: -24px 0 -8px; }
+.dish-line { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
+.dish-name { font-size: 17px; letter-spacing: -0.02em; }
+.leader { flex: 1; min-width: 16px; border-bottom: 1px dotted var(--line2); transform: translateY(-4px); }
+.dish-tag { font: 400 11px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink2); white-space: nowrap; }
+.dish-desc { font-size: 14.5px; font-style: italic; line-height: 1.55; color: var(--ink2); }
+.dish:hover .dish-name { text-decoration: underline; text-underline-offset: 4px; }
+.menu-check { border-top: 1px dashed var(--ink); padding-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+
+/* starters chapters */
+.spread { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.spread .big { grid-column: span 2; aspect-ratio: 3 / 2; }
+.spread .stack { display: flex; flex-direction: column; gap: 16px; }
+.spread .stack .ph { flex: 1; }
+
+/* desserts */
+.case { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 28px 24px; }
+.case .ph { aspect-ratio: 1 / 1; }
+.case figcaption { border-top: 1px solid var(--line); padding-top: 8px; color: var(--ink); font-size: 14px; }
+.case figcaption span + span { font: 400 11px var(--mono); color: var(--ink2); }
+.chip { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line2); font-size: 11.5px; }
+.chip i { width: 6px; height: 6px; border-radius: 50%; background: #9cbed3; }
+
+/* beverages */
+.feature { display: flex; flex-wrap: wrap; gap: 28px 48px; text-decoration: none; }
+.feature .ph { flex: 1 1 300px; max-width: 440px; aspect-ratio: 4 / 3; }
+.feature div:last-child { flex: 999 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+.feature strong { font: 400 clamp(30px, 4vw, 40px) var(--display); line-height: 1.1; letter-spacing: -0.04em; }
+.post { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 32px; padding: 20px 0; text-decoration: none; }
+.post .eyebrow { width: 100px; }
+.post span.t { flex: 999 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.post span.t b { font-weight: 400; font-size: 18px; letter-spacing: -0.02em; }
+.post span.t i { font-style: normal; font-size: 14.5px; color: var(--ink2); }
+.post .meta { font: 400 11.5px var(--mono); color: var(--ink2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.posts li { border-top: 1px solid var(--line); border-bottom: none; }
+
+/* check */
+.band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--sunk); padding-block: 56px; }
+.receipt { width: 100%; max-width: 540px; margin: 0 auto; }
+.tear-top, .tear-bot { height: 10px; }
+.tear-top { background: linear-gradient(135deg, transparent 5px, var(--bg) 0) 0 0 / 10px 10px repeat-x, linear-gradient(225deg, transparent 5px, var(--bg) 0) 0 0 / 10px 10px repeat-x; }
+.tear-bot { background: linear-gradient(45deg, transparent 5px, var(--bg) 0) 0 0 / 10px 10px repeat-x, linear-gradient(-45deg, transparent 5px, var(--bg) 0) 0 0 / 10px 10px repeat-x; }
+.paper { background: var(--bg); padding: 40px clamp(20px, 6vw, 40px) 32px; font-family: var(--mono); font-size: 14px; line-height: 1.65; display: flex; flex-direction: column; gap: 20px; }
+.paper h1 { margin: 0; font: 400 34px var(--display); letter-spacing: -0.03em; }
+.dash { border-top: 1px dashed var(--ink); }
+.r-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; text-decoration: none; min-height: 26px; }
+.r-row .leader { min-width: 12px; }
+.r-tot { display: flex; justify-content: space-between; gap: 12px; text-transform: uppercase; }
+.paper label { display: flex; flex-direction: column; gap: 4px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink2); }
+.paper input, .paper textarea { font: 400 13px var(--body); color: var(--ink); background: var(--bg); border: none; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line2); letter-spacing: 0; text-transform: none; }
+.paper input { height: 42px; padding: 0 12px; }
+.paper textarea { padding: 10px 12px; resize: vertical; }
+.paper input:focus, .paper textarea:focus { outline: none; box-shadow: inset 0 0 0 1px var(--ink), 0 0 0 4px color-mix(in srgb, #9cbed3 35%, transparent); }
+.stamp { padding: 4px 16px; border: 1.5px solid var(--ink); border-radius: 6px; font-size: 20px; letter-spacing: 0.24em; transform: rotate(-8deg); }
+.barcode { display: flex; align-items: stretch; height: 40px; gap: 2px; }
+.barcode i { background: var(--ink); }
+
+/* palette dock */
+.dock { position: fixed; right: calc(20px + env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 20; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.fab { width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--bg); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line2); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.panel { width: 248px; max-width: calc(100vw - 40px); padding: 14px; border-radius: 20px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); box-shadow: 0 40px 80px -40px rgba(17,17,17,.35); display: flex; flex-direction: column; gap: 4px; }
+.panel .eyebrow { padding: 2px 8px 8px; }
+.pchip { display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 0 10px; border-radius: 10px; border: none; background: transparent; color: var(--ink); font: 400 13.5px var(--body); text-align: left; cursor: pointer; }
+.pchip:hover { background: var(--sunk); }
+.pchip[aria-pressed="true"] { background: var(--sunk); box-shadow: inset 0 0 0 1px var(--ink); }
+.dots { display: flex; }
+.dots i { width: 13px; height: 13px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0,0,0,0.14); }
+.dots i + i { margin-left: -4px; }
+.mode { margin-top: 6px; display: flex; align-items: center; justify-content: space-between; min-height: 42px; padding: 0 12px; border-radius: 10px; border: none; box-shadow: inset 0 0 0 1px var(--line2); background: transparent; color: var(--ink); font: 400 13.5px var(--body); cursor: pointer; }
+.mode span + span { font: 400 11px var(--mono); color: var(--ink2); text-transform: uppercase; letter-spacing: 0.12em; }
+
+@media (max-width: 560px) {
+  .menu-in { padding: 44px 6% 40px; }
+  .spread { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spread .big { grid-column: span 2; }
+  .spread .stack { grid-column: span 2; flex-direction: row; }
+  .spread .stack .ph { aspect-ratio: 1 / 1; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="gut">
+  <header class="wrap bar">
+    <a class="brand" href="#home"><i aria-hidden="true">K</i>Katrina Chen</a>
+    <nav class="primary" aria-label="Primary">
+      <a href="#starters" data-nav="starters">Starters</a>
+      <a href="#mindless" data-nav="mains">Mains</a>
+      <a href="#desserts" data-nav="desserts">Desserts</a>
+      <a href="#beverages" data-nav="beverages">Beverages</a>
+      <a href="#check" data-nav="check">The Check</a>
+    </nav>
+  </header>
+</div>
+
+<!-- HOME -->
+<section data-page="home" class="gut">
+  <main class="menu">
+    <div class="menu-in">
+      <div class="mast">
+        <span class="eyebrow" style="letter-spacing:0.18em">Est. Philadelphia · Now serving Ithaca</span>
+        <h1 class="h1">Kat’s Menu</h1>
+        <span style="font-size:15px;color:var(--ink2)">A tasting of data, design and a little stargazing</span>
+      </div>
+      <div class="menu-rule" aria-hidden="true"></div>
+
+      <section class="course">
+        <a class="course-head" href="#starters"><span class="eyebrow">About &amp; experience</span><h2>Starters</h2></a>
+        <a class="dish" href="#starters"><span class="dish-line"><span class="dish-name">The Philadelphia Original</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Where the curiosity started</span></a>
+        <a class="dish" href="#starters"><span class="dish-line"><span class="dish-name">Tufts → Cornell Dyson</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A transfer, a new major, two minors (Data Science, Astronomy)</span></a>
+      </section>
+
+      <section class="course">
+        <a class="course-head" href="#mindless"><span class="eyebrow">Projects</span><h2>Mains</h2></a>
+        <a class="dish" href="#mindless"><span class="dish-line"><span class="dish-name">Mindless</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A design concept for a calm AI day planner that maps your errands into one route</span></a>
+        <a class="dish" href="#quizzer"><span class="dish-line"><span class="dish-name">Quizzer</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A design concept for a Chrome side panel that turns any reading into an adaptive quiz</span></a>
+        <a class="dish" href="#noted"><span class="dish-line"><span class="dish-name">Noted</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A design concept for a side-panel notepad that clips and annotates as you browse</span></a>
+      </section>
+
+      <section class="course">
+        <a class="course-head" href="#desserts"><span class="eyebrow">Interests &amp; hobbies</span><h2>Desserts</h2></a>
+        <a class="dish" href="#desserts"><span class="dish-line"><span class="dish-name">Digital illustration</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">[Art series title] and other sketchbook favorites</span></a>
+        <a class="dish" href="#desserts"><span class="dish-line"><span class="dish-name">Stargazing &amp; space tech</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">The minor that started as a hobby</span></a>
+        <a class="dish" href="#desserts"><span class="dish-line"><span class="dish-name">Roblox</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Building and exploring Roblox worlds</span></a>
+      </section>
+
+      <section class="course">
+        <a class="course-head" href="#beverages"><span class="eyebrow">Notes &amp; rants</span><h2>Beverages</h2></a>
+        <a class="dish" href="#beverages"><span class="dish-line"><span class="dish-name">[Latest post title]</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">[One-line teaser]</span></a>
+      </section>
+
+      <div class="menu-check">
+        <span class="eyebrow" style="letter-spacing:0.18em">Contact &amp; resume</span>
+        <span style="font:400 32px var(--display);letter-spacing:-0.035em">The Check</span>
+        <span class="dish-desc">Gratuity not required. A hello is plenty.</span>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding-top:4px">
+          <a class="btn" href="#check">Ask for the check</a>
+          <a class="btn ghost" href="#check">View resume</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- STARTERS -->
+<section data-page="starters" class="gut" hidden>
+  <div class="wrap page" style="gap:88px">
+    <a class="eyebrow back" href="#home" style="margin-bottom:-56px">← Menu</a>
+    <section class="split hero">
+      <div class="main">
+        <span class="eyebrow">About</span>
+        <h1 class="h1">Starters</h1>
+        <p class="lede">I’m Kat. I like work where careful analysis and good design meet, and I’m pointing that toward space computing and mission data.</p>
+      </div>
+      <div class="ph side" style="aspect-ratio:4/5;display:flex">[Portrait]</div>
+    </section>
+
+    <section class="split ruled">
+      <div class="side"><span class="eyebrow">01 / Origin</span><h2 class="h2">Philadelphia</h2><p class="copy">Where I grew up and where the curiosity started. [A line or two about Philly.]</p></div>
+      <div class="main"><div class="spread"><div class="ph big">[Philly photo]</div><div class="stack"><div class="ph">[Photo]</div><div class="ph">[Photo]</div></div></div></div>
+    </section>
+    <section class="split ruled">
+      <div class="side"><span class="eyebrow">02 / First pour</span><h2 class="h2">Tufts University</h2><p class="copy">Mathematics and Computer Science, before transferring. [A line about your time there.]</p></div>
+      <div class="main"><div class="spread"><div class="ph big">[Tufts photo]</div><div class="stack"><div class="ph">[Photo]</div><div class="ph">[Photo]</div></div></div></div>
+    </section>
+    <section class="split ruled">
+      <div class="side"><span class="eyebrow">03 / House special</span><h2 class="h2">Cornell Dyson</h2><p class="copy">Applied Economics &amp; Management, minoring in Data Science and Astronomy. Class of 2028.</p></div>
+      <div class="main"><div class="spread"><div class="ph big">[Cornell photo]</div><div class="stack"><div class="ph">[Photo]</div><div class="ph">[Photo]</div></div></div></div>
+    </section>
+
+    <a class="btn end" href="#mindless">Next course: Mains →</a>
+  </div>
+</section>
+
+<!-- MINDLESS -->
+<section data-page="mindless" class="gut" hidden>
+  <div class="wrap page">
+    <div class="toprow">
+      <a class="eyebrow back" href="#home">← Menu</a>
+      <div class="seg" role="group" aria-label="Mains"><a href="#mindless" aria-current="page">Mindless</a><a href="#quizzer">Quizzer</a><a href="#noted">Noted</a></div>
+    </div>
+    <section class="split hero">
+      <div class="main">
+        <span class="eyebrow">Mains · UI design concept · 1 of 3</span>
+        <h1 class="h1">Mindless</h1>
+        <p class="lede">An AI day planner that works out the quickest, calmest way through everything on your list.</p>
+      </div>
+      <dl class="side" style="margin:0;gap:0">
+        <div class="kv"><dt>Serves</dt><dd>Anyone with too many errands</dd></div>
+        <div class="kv"><dt>Role</dt><dd>Design, built with Claude Code</dd></div>
+        <div class="kv"><dt>Prep</dt><dd>[Time spent]</dd></div>
+      </dl>
+    </section>
+    <figure>
+      <img src="img/mindless-demo.gif" alt="Mindless demo: a brain dump becomes an ordered plan, a route map, then a re-plan" width="960" height="600" loading="lazy">
+      <figcaption><span>Brain dump to plan, route map and re-plan.</span><span class="eyebrow">Demo</span></figcaption>
+    </figure>
+    <section class="split">
+      <div class="side ruled">
+        <span class="eyebrow">Ingredients</span>
+        <ul class="rows">
+          <li class="ing"><span>Claude Code</span><span>Build partner</span></li>
+          <li class="ing"><span>Leaflet + OSM</span><span>Route map</span></li>
+          <li class="ing"><span>Google Calendar</span><span>Busy time</span></li>
+          <li class="ing"><span>Claude</span><span>Messy notes</span></li>
+          <li class="ing"><span>7 themes</span><span>Light and dark</span></li>
+        </ul>
+      </div>
+      <div class="main ruled">
+        <span class="eyebrow">Method</span>
+        <ol class="rows">
+          <li class="step"><b>01</b><span><strong>Let people dump everything</strong><em>Tasks come in however is easiest: a messy brain dump, a form, voice, or a pasted list.</em></span></li>
+          <li class="step"><b>02</b><span><strong>Explain every step</strong><em>The plan says why each stop sits where it does, like “Grouped with your other Downtown stops.”</em></span></li>
+          <li class="step"><b>03</b><span><strong>Make the route the hero</strong><em>Numbered stops on a live map, switchable between walking, transit, biking and driving.</em></span></li>
+          <li class="step"><b>04</b><span><strong>Re-plan without panic</strong><em>Running late or adding a task previews what moves before you accept it, with undo.</em></span></li>
+          <li class="step"><b>05</b><span><strong>Let it feel like yours</strong><em>Seven color themes with light and dark modes, and six font pairings.</em></span></li>
+        </ol>
+      </div>
+    </section>
+    <section class="ruled" style="display:flex;flex-direction:column;gap:16px">
+      <span class="eyebrow">Plating</span>
+      <div class="shots wide">
+        <figure><img src="img/desktop-plan.png" alt="Mindless plan screen with an ordered list of the day's tasks" width="1440" height="920" loading="lazy"><figcaption>The plan, with a reason for every stop.</figcaption></figure>
+        <figure><img src="img/desktop-map.png" alt="Mindless route map with numbered stops" width="1440" height="920" loading="lazy"><figcaption>The route map, with a hand-off to Google Maps.</figcaption></figure>
+      </div>
+      <figure style="flex-direction:row;flex-wrap:wrap;align-items:flex-end;gap:16px 28px">
+        <img src="img/phone-map.png" alt="Mindless on a phone with a draggable stop list over the map" width="780" height="1688" style="width:240px;border-radius:22px" loading="lazy">
+        <figcaption style="max-width:260px;padding-bottom:8px">On a phone, the stop list becomes a draggable sheet over the map.</figcaption>
+      </figure>
+    </section>
+    <section class="split ruled">
+      <span class="eyebrow side">Chef’s notes</span>
+      <p class="main" style="margin:0;font-size:17px;line-height:1.7">[What you’d change next, what you learned designing it, and why it’s a concept rather than a shipped product.]</p>
+    </section>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px">
+      <a class="btn ghost" href="https://github.com/Couchkat/Mindless">See the code on GitHub ↗</a>
+      <a class="btn" href="#quizzer">Next main: Quizzer →</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZZER -->
+<section data-page="quizzer" class="gut" hidden>
+  <div class="wrap page">
+    <div class="toprow">
+      <a class="eyebrow back" href="#home">← Menu</a>
+      <div class="seg" role="group" aria-label="Mains"><a href="#mindless">Mindless</a><a href="#quizzer" aria-current="page">Quizzer</a><a href="#noted">Noted</a></div>
+    </div>
+    <section class="split hero">
+      <div class="main">
+        <span class="eyebrow">Mains · UI design concept · 2 of 3</span>
+        <h1 class="h1">Quizzer</h1>
+        <p class="lede">A Chrome side panel that turns the page you’re reading, or a passage you highlight, into an endless, adaptive quiz with AI explanations.</p>
+      </div>
+      <dl class="side" style="margin:0;gap:0">
+        <div class="kv"><dt>Serves</dt><dd>Anyone studying from a page</dd></div>
+        <div class="kv"><dt>Role</dt><dd>Design, built with Claude Code</dd></div>
+        <div class="kv"><dt>Prep</dt><dd>[Time spent]</dd></div>
+      </dl>
+    </section>
+    <figure>
+      <img src="img/quizzer-demo.gif" alt="Quizzer demo: highlight a passage, click Quiz me, answer, see why, jump to the source and ask a follow-up" width="1100" height="696" loading="lazy">
+      <figcaption><span>Highlight, quiz, see why, jump to the source, ask a follow-up.</span><span class="eyebrow">Demo</span></figcaption>
+    </figure>
+    <section class="split">
+      <div class="side ruled">
+        <span class="eyebrow">Ingredients</span>
+        <ul class="rows">
+          <li class="ing"><span>Chrome side panel</span><span>Home</span></li>
+          <li class="ing"><span>Gemini Nano</span><span>On-device AI</span></li>
+          <li class="ing"><span>Claude, OpenAI, Gemini</span><span>Optional keys</span></li>
+          <li class="ing"><span>Noted’s tokens</span><span>Design system</span></li>
+          <li class="ing"><span>Lagoon</span><span>Its own accent</span></li>
+        </ul>
+      </div>
+      <div class="main ruled">
+        <span class="eyebrow">Method</span>
+        <ol class="rows">
+          <li class="step"><b>01</b><span><strong>Start from what you’re reading</strong><em>Quiz the whole page or a selection, right-click “Quiz me on this,” or tap the chip that appears when you highlight 15+ words.</em></span></li>
+          <li class="step"><b>02</b><span><strong>Mix the question types</strong><em>Multiple choice, true or false, short answer graded by the AI, and flashcards.</em></span></li>
+          <li class="step"><b>03</b><span><strong>Keep it endless and adaptive</strong><em>Two questions are always written ahead. A missed idea comes back reworded within three questions; a streak makes it harder.</em></span></li>
+          <li class="step"><b>04</b><span><strong>Explain, then point back</strong><em>Why the right answer is right, why your pick wasn’t, and “Show in page” highlights the sentence the question came from.</em></span></li>
+          <li class="step"><b>05</b><span><strong>Private by default</strong><em>Runs on Chrome’s built-in model, offline and free, and every quiz saves locally with a review of missed questions.</em></span></li>
+        </ol>
+      </div>
+    </section>
+    <section class="ruled" style="display:flex;flex-direction:column;gap:16px">
+      <span class="eyebrow">Plating · The side panel</span>
+      <div class="shots">
+        <figure><img src="img/panel-feedback.png" alt="Quizzer feedback screen explaining an answer" width="760" height="1520" loading="lazy"><figcaption><span>Feedback</span><span class="eyebrow">01</span></figcaption></figure>
+        <figure><img src="img/panel-short-answer.png" alt="Quizzer short-answer question graded by AI" width="760" height="1520" loading="lazy"><figcaption><span>Short answer</span><span class="eyebrow">02</span></figcaption></figure>
+        <figure><img src="img/panel-flashcard.png" alt="Quizzer flashcard" width="760" height="1520" loading="lazy"><figcaption><span>Flashcard</span><span class="eyebrow">03</span></figcaption></figure>
+        <figure><img src="img/panel-dark.png" alt="Quizzer side panel in dark mode" width="760" height="1520" loading="lazy"><figcaption><span>Dark mode</span><span class="eyebrow">04</span></figcaption></figure>
+      </div>
+    </section>
+    <section class="split ruled">
+      <span class="eyebrow side">Chef’s notes</span>
+      <p class="main" style="margin:0;font-size:17px;line-height:1.7">A sibling to Noted: it shares Noted’s design system and gets its own Lagoon accent. [What you learned designing it and what you’d change next.]</p>
+    </section>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px">
+      <a class="btn ghost" href="https://github.com/Couchkat/Quizzer">See the code on GitHub ↗</a>
+      <a class="btn" href="#noted">Next main: Noted →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOTED -->
+<section data-page="noted" class="gut" hidden>
+  <div class="wrap page">
+    <div class="toprow">
+      <a class="eyebrow back" href="#home">← Menu</a>
+      <div class="seg" role="group" aria-label="Mains"><a href="#mindless">Mindless</a><a href="#quizzer">Quizzer</a><a href="#noted" aria-current="page">Noted</a></div>
+    </div>
+    <section class="split hero">
+      <div class="main">
+        <span class="eyebrow">Mains · UI design concept · 3 of 3</span>
+        <h1 class="h1">Noted</h1>
+        <p class="lede">A notepad that lives in Chrome’s side panel, so your notes stay open while you switch tabs.</p>
+      </div>
+      <dl class="side" style="margin:0;gap:0">
+        <div class="kv"><dt>Serves</dt><dd>Anyone taking notes on the web</dd></div>
+        <div class="kv"><dt>Role</dt><dd>Design, built with Claude Code</dd></div>
+        <div class="kv"><dt>Prep</dt><dd>[Time spent]</dd></div>
+      </dl>
+    </section>
+    <figure>
+      <img src="img/noted-demo.gif" alt="Noted demo: typing notes, clipping a paragraph, annotating a screenshot and switching color themes" width="1280" height="889" loading="lazy">
+      <figcaption><span>Typing, clipping a paragraph, annotating a screenshot, switching themes.</span><span class="eyebrow">Demo</span></figcaption>
+    </figure>
+    <section class="split">
+      <div class="side ruled">
+        <span class="eyebrow">Ingredients</span>
+        <ul class="rows">
+          <li class="ing"><span>Chrome side panel</span><span>Always open</span></li>
+          <li class="ing"><span>Quick clip</span><span>With source</span></li>
+          <li class="ing"><span>Screenshot annotator</span><span>Pen to crop</span></li>
+          <li class="ing"><span>Word, Google Docs</span><span>Export</span></li>
+          <li class="ing"><span>5 themes</span><span>Light and dark</span></li>
+        </ul>
+      </div>
+      <div class="main ruled">
+        <span class="eyebrow">Method</span>
+        <ol class="rows">
+          <li class="step"><b>01</b><span><strong>One click from any tab</strong><em>Opens in Chrome’s side panel from the toolbar or a shortcut, and stays put as you change tabs.</em></span></li>
+          <li class="step"><b>02</b><span><strong>Clip with context</strong><em>Highlight text and choose Add to Noted. It arrives as a quote with the page title, link, site and time.</em></span></li>
+          <li class="step"><b>03</b><span><strong>Screenshots without downloads</strong><em>Capture the tab, mark it up with a pen, arrow, box, label or crop, and drop it into the note.</em></span></li>
+          <li class="step"><b>04</b><span><strong>A real editor, kept organized</strong><em>Headings, checklists, tables and Markdown shortcuts, plus a Scratchpad and folders with search.</em></span></li>
+          <li class="step"><b>05</b><span><strong>Make it yours</strong><em>Evergreen, Cobalt, Terracotta, Rose and Graphite, each in light and dark.</em></span></li>
+        </ol>
+      </div>
+    </section>
+    <section class="ruled" style="display:flex;flex-direction:column;gap:16px">
+      <span class="eyebrow">Plating</span>
+      <figure><img src="img/noted-hero.png" alt="Noted open beside a lecture page, with typed notes and a clipped paragraph" width="1600" height="1153" loading="lazy"><figcaption>The page stays on the left, notes on the right.</figcaption></figure>
+      <div class="shots">
+        <figure><img src="img/annotate.png" alt="Noted screenshot annotator with an arrow, box and text label" width="570" height="1080" loading="lazy"><figcaption><span>Annotate a screenshot</span><span class="eyebrow">01</span></figcaption></figure>
+        <figure><img src="img/drawer.png" alt="Noted drawer with folders, a scratchpad and search" width="570" height="1080" loading="lazy"><figcaption><span>Notes and folders</span><span class="eyebrow">02</span></figcaption></figure>
+        <figure><img src="img/appearance.png" alt="Noted appearance menu with mode and color themes" width="570" height="1080" loading="lazy"><figcaption><span>Appearance</span><span class="eyebrow">03</span></figcaption></figure>
+      </div>
+      <figure><img src="img/themes.png" alt="Noted's five color themes in light and dark mode" width="1600" height="818" loading="lazy"><figcaption>Five themes, each with a light and dark version.</figcaption></figure>
+    </section>
+    <section class="split ruled">
+      <span class="eyebrow side">Chef’s notes · Why I made it</span>
+      <p class="main" style="margin:0;font-size:17px;line-height:1.7">I wanted a notepad one click away on whatever tab I was on, and a way to put screenshots of what I’m looking at straight into my notes without downloading them and filling up my laptop.</p>
+    </section>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px">
+      <a class="btn ghost" href="https://github.com/Couchkat/Noted">See the code on GitHub ↗</a>
+      <a class="btn" href="#desserts">Next course: Desserts →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DESSERTS -->
+<section data-page="desserts" class="gut" hidden>
+  <div class="wrap page" style="gap:56px">
+    <a class="eyebrow back" href="#home" style="margin-bottom:-24px">← Menu</a>
+    <section class="split hero" style="justify-content:space-between">
+      <div class="main">
+        <span class="eyebrow">Interests &amp; hobbies</span>
+        <h1 class="h1">Desserts</h1>
+        <p class="lede">The pastry case: things I make and love when nobody’s grading them.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Pick a shelf" style="align-self:flex-end">
+        <button type="button" data-shelf="art" aria-pressed="true">Illustration</button>
+        <button type="button" data-shelf="stars" aria-pressed="false">Stargazing</button>
+        <button type="button" data-shelf="roblox" aria-pressed="false">Roblox</button>
+      </div>
+    </section>
+
+    <section class="split ruled" data-shelf-panel="art">
+      <div class="side"><span class="eyebrow">Top shelf</span><h2 class="h2">Digital illustration</h2><p class="copy">[One or two lines on what you like to draw and why.]</p><span class="chip"><i aria-hidden="true"></i>Made in Procreate</span></div>
+      <div class="main case">
+        <figure><div class="ph">[Artwork 1]</div><figcaption><span>[Piece title]</span><span>01</span></figcaption></figure>
+        <figure><div class="ph">[Artwork 2]</div><figcaption><span>[Piece title]</span><span>02</span></figcaption></figure>
+        <figure><div class="ph">[Artwork 3]</div><figcaption><span>[Piece title]</span><span>03</span></figcaption></figure>
+        <figure><div class="ph">[Artwork 4]</div><figcaption><span>[Piece title]</span><span>04</span></figcaption></figure>
+        <figure><div class="ph">[Artwork 5]</div><figcaption><span>[Piece title]</span><span>05</span></figcaption></figure>
+        <figure><div class="ph">[Artwork 6]</div><figcaption><span>[Piece title]</span><span>06</span></figcaption></figure>
+      </div>
+    </section>
+    <section class="split ruled" data-shelf-panel="stars" hidden>
+      <div class="side"><span class="eyebrow">Middle shelf</span><h2 class="h2">Stargazing &amp; space tech</h2><p class="copy">The hobby that turned into a minor, and a long-term pull toward space computing and mission data.</p><span class="chip"><i aria-hidden="true"></i>Astronomy minor</span></div>
+      <div class="main case">
+        <figure><div class="ph">[Night-sky photo or sketch]</div><figcaption><span>[Caption]</span><span>01</span></figcaption></figure>
+        <figure><div class="ph">[Favorite object or mission]</div><figcaption><span>[Caption]</span><span>02</span></figcaption></figure>
+        <figure><div class="ph">[Something you built or read]</div><figcaption><span>[Caption]</span><span>03</span></figcaption></figure>
+      </div>
+    </section>
+    <section class="split ruled" data-shelf-panel="roblox" hidden>
+      <div class="side"><span class="eyebrow">Bottom shelf</span><h2 class="h2">Roblox</h2><p class="copy">Building and exploring Roblox worlds. [A line on what you make or play.]</p><span class="chip"><i aria-hidden="true"></i>Games</span></div>
+      <div class="main case">
+        <figure><div class="ph">[Game screenshot]</div><figcaption><span>[World or game name]</span><span>01</span></figcaption></figure>
+        <figure><div class="ph">[Game screenshot]</div><figcaption><span>[World or game name]</span><span>02</span></figcaption></figure>
+        <figure><div class="ph">[Build in progress]</div><figcaption><span>[Caption]</span><span>03</span></figcaption></figure>
+      </div>
+    </section>
+
+    <a class="btn end" href="#beverages">Something to drink? Beverages →</a>
+  </div>
+</section>
+
+<!-- BEVERAGES -->
+<section data-page="beverages" class="gut" hidden>
+  <div class="wrap page" style="gap:56px">
+    <a class="eyebrow back" href="#home" style="margin-bottom:-24px">← Menu</a>
+    <section class="split hero">
+      <div class="main">
+        <span class="eyebrow">Notes, essays &amp; rants</span>
+        <h1 class="h1">Beverages</h1>
+        <p class="lede">Short things I write between bigger projects. Pick a drink by how long you’ve got.</p>
+      </div>
+      <aside class="side" aria-label="Drinks board" style="gap:22px">
+        <div class="ruled" style="display:flex;flex-direction:column;gap:4px;padding-top:12px"><span class="eyebrow">Espresso</span><span style="font-size:15px">Quick takes, under 3 minutes</span></div>
+        <div class="ruled" style="display:flex;flex-direction:column;gap:4px;padding-top:12px"><span class="eyebrow">Pour-over</span><span style="font-size:15px">Long reads, slow and careful</span></div>
+        <div class="ruled" style="display:flex;flex-direction:column;gap:4px;padding-top:12px"><span class="eyebrow">Hot tea</span><span style="font-size:15px">Rants, served hot</span></div>
+      </aside>
+    </section>
+    <a class="feature ruled" href="#beverages" style="padding-top:22px">
+      <div class="ph">[Cover illustration]</div>
+      <div>
+        <span class="eyebrow" style="display:inline-flex;align-items:center;gap:8px"><i aria-hidden="true" style="width:6px;height:6px;border-radius:50%;background:#9cbed3"></i>Today’s special · Pour-over</span>
+        <strong>[Featured post title]</strong>
+        <span style="font-size:16px;line-height:1.65;color:var(--ink2);max-width:560px">[Two-line teaser for your favorite or newest long read.]</span>
+        <span class="eyebrow" style="letter-spacing:0;text-transform:none;font-size:11.5px">[Date] · 8 min read</span>
+      </div>
+    </a>
+    <section style="display:flex;flex-direction:column;gap:18px">
+      <div class="seg" role="group" aria-label="Filter posts" style="align-self:flex-start">
+        <button type="button" data-kind="all" aria-pressed="true">All drinks</button>
+        <button type="button" data-kind="espresso" aria-pressed="false">Espresso</button>
+        <button type="button" data-kind="pourover" aria-pressed="false">Pour-over</button>
+        <button type="button" data-kind="hot" aria-pressed="false">Hot tea</button>
+      </div>
+      <ul class="rows posts">
+        <li data-k="espresso"><a class="post" href="#beverages"><span class="eyebrow">Espresso</span><span class="t"><b>[Post title]</b><i>[One-line teaser for a quick take]</i></span><span class="meta">[Date] · 2 min</span></a></li>
+        <li data-k="hot"><a class="post" href="#beverages"><span class="eyebrow">Hot tea</span><span class="t"><b>[Post title]</b><i>[One-line teaser for a rant]</i></span><span class="meta">[Date] · 3 min</span></a></li>
+        <li data-k="pourover"><a class="post" href="#beverages"><span class="eyebrow">Pour-over</span><span class="t"><b>[Post title]</b><i>[One-line teaser for a longer essay]</i></span><span class="meta">[Date] · 9 min</span></a></li>
+        <li data-k="espresso"><a class="post" href="#beverages"><span class="eyebrow">Espresso</span><span class="t"><b>[Post title]</b><i>[One-line teaser for a quick take]</i></span><span class="meta">[Date] · 1 min</span></a></li>
+        <li data-k="hot"><a class="post" href="#beverages"><span class="eyebrow">Hot tea</span><span class="t"><b>[Post title]</b><i>[One-line teaser for a rant]</i></span><span class="meta">[Date] · 4 min</span></a></li>
+      </ul>
+    </section>
+    <a class="btn end" href="#check">Ready for the check →</a>
+  </div>
+</section>
+
+<!-- CHECK -->
+<section data-page="check" hidden>
+  <div class="gut"><div class="wrap" style="padding-top:40px;padding-bottom:24px"><a class="eyebrow back" href="#home">← Menu</a></div></div>
+  <section class="band gut" aria-label="Receipt">
+    <div class="receipt">
+      <div class="tear-top" aria-hidden="true"></div>
+      <div class="paper">
+        <div style="text-align:center;display:flex;flex-direction:column;gap:2px">
+          <h1>Kat’s Menu</h1>
+          <span>Ithaca, NY · Est. Philadelphia</span>
+          <span>Portfolio of Katrina Chen</span>
+        </div>
+        <div class="dash" aria-hidden="true"></div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 16px;text-transform:uppercase">
+          <span>Table 01</span><span style="text-align:right">Server: Kat</span>
+          <span>Guest: You</span><span style="text-align:right" id="r-date"></span>
+        </div>
+        <div class="dash" aria-hidden="true"></div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="display:flex;gap:10px;text-transform:uppercase;color:var(--ink2)"><span style="width:18px">Qty</span><span style="flex:1;padding-left:10px">Item</span><span>Served</span></div>
+          <a class="r-row" href="#starters"><span style="width:18px">1</span><span>Starters</span><span class="leader" aria-hidden="true"></span><span>About</span></a>
+          <a class="r-row" href="#mindless"><span style="width:18px">1</span><span>Mains</span><span class="leader" aria-hidden="true"></span><span>3 projects</span></a>
+          <a class="r-row" href="#desserts"><span style="width:18px">1</span><span>Desserts</span><span class="leader" aria-hidden="true"></span><span>Hobbies</span></a>
+          <a class="r-row" href="#beverages"><span style="width:18px">1</span><span>Beverages</span><span class="leader" aria-hidden="true"></span><span>Blog</span></a>
+        </div>
+        <div class="dash" aria-hidden="true"></div>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <div class="r-tot"><span>Subtotal</span><span>Time well spent</span></div>
+          <div class="r-tot"><span>Tax</span><span>0.00</span></div>
+          <div class="r-tot" style="font-size:16px;font-weight:500;padding-top:4px"><span>Total</span><span>One hello</span></div>
+        </div>
+        <div class="dash" aria-hidden="true"></div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="text-transform:uppercase;letter-spacing:0.1em;color:var(--ink2)">Pay with</span>
+          <div class="r-row"><span>Email</span><span class="leader" aria-hidden="true"></span><span style="user-select:all">[your email]</span></div>
+          <div class="r-row"><span>LinkedIn</span><span class="leader" aria-hidden="true"></span><a href="#check">[linkedin.com/in/…]</a></div>
+          <div class="r-row"><span>GitHub</span><span class="leader" aria-hidden="true"></span><a href="https://github.com/Couchkat">github.com/Couchkat</a></div>
+          <div class="r-row"><span>Resume</span><span class="leader" aria-hidden="true"></span><a href="#check">[Resume link]</a></div>
+        </div>
+        <div class="dash" aria-hidden="true"></div>
+        <form id="note-form" style="display:flex;flex-direction:column;gap:12px">
+          <span style="text-transform:uppercase;letter-spacing:0.1em;color:var(--ink2)">Note for the chef</span>
+          <label for="note-name">Name<input id="note-name" type="text" placeholder="Your name" autocomplete="name"></label>
+          <label for="note-email">Email<input id="note-email" type="email" placeholder="you@example.com" autocomplete="email"></label>
+          <label for="note-msg">Note<textarea id="note-msg" rows="3" placeholder="Say hi, ask about a project…"></textarea></label>
+          <button type="submit" class="btn" style="justify-content:center">Pay with a hello</button>
+        </form>
+        <div id="note-done" role="status" hidden style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 0;text-align:center">
+          <span class="stamp">PAID</span>
+          <span>Preview only: this draft doesn’t send notes yet. Use the email above for now.</span>
+        </div>
+        <div class="dash" aria-hidden="true"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="barcode" id="barcode" aria-hidden="true"></div>
+          <span style="letter-spacing:0.3em">KC-2028-ITH</span>
+          <span style="text-transform:uppercase">Thank you, come again</span>
+        </div>
+      </div>
+      <div class="tear-bot" aria-hidden="true"></div>
+    </div>
+  </section>
+  <div class="gut"><p class="eyebrow" style="text-align:center;margin:40px 0 120px">Based in Ithaca, NY · Open to [internships, summer 2027]</p></div>
+</section>
+
+<div class="dock">
+  <div class="panel" id="palette-panel" role="group" aria-label="Color palette" hidden>
+    <span class="eyebrow">Table setting</span>
+    <div id="chips" style="display:flex;flex-direction:column;gap:2px"></div>
+    <button type="button" class="mode" id="mode-btn" aria-pressed="false"><span>Dark mode</span><span id="mode-label">Off</span></button>
+  </div>
+  <button type="button" class="fab" id="fab" aria-label="Change color palette" aria-expanded="false" aria-controls="palette-panel">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.4 0 2-1 1.4-2.1-.7-1.3.2-2.9 1.7-2.9H17a3.5 3.5 0 0 0 3.5-3.5c0-4.7-3.8-8.5-8.5-8.5z"></path><circle cx="7.8" cy="11.5" r="1.1"></circle><circle cx="10.5" cy="7.6" r="1.1"></circle><circle cx="15" cy="8" r="1.1"></circle></svg>
+  </button>
+</div>
+
+<script>
+(function () {
+  /* ---------- routing ---------- */
+  var pages = document.querySelectorAll('[data-page]');
+  var navMap = { starters: 'starters', mindless: 'mains', quizzer: 'mains', noted: 'mains', desserts: 'desserts', beverages: 'beverages', check: 'check' };
+  var known = {}; pages.forEach(function (p) { known[p.dataset.page] = true; });
+  function route() {
+    var r = location.hash.replace('#', '') || 'home';
+    if (!known[r]) r = 'home';
+    pages.forEach(function (p) { p.hidden = p.dataset.page !== r; });
+    document.body.dataset.route = r;
+    document.querySelectorAll('[data-nav]').forEach(function (a) {
+      if (navMap[r] === a.dataset.nav) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  /* ---------- desserts shelves ---------- */
+  var shelfBtns = document.querySelectorAll('[data-shelf]');
+  shelfBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      shelfBtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('[data-shelf-panel]').forEach(function (p) { p.hidden = p.dataset.shelfPanel !== b.dataset.shelf; });
+    });
+  });
+
+  /* ---------- beverages filter ---------- */
+  var kindBtns = document.querySelectorAll('[data-kind]');
+  kindBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.dataset.kind;
+      kindBtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('.posts li').forEach(function (li) { li.hidden = !(k === 'all' || li.dataset.k === k); });
+    });
+  });
+
+  /* ---------- receipt ---------- */
+  var d = new Date();
+  document.getElementById('r-date').textContent = (d.getMonth() + 1) + '/' + d.getDate() + '/' + String(d.getFullYear()).slice(2);
+  var bc = document.getElementById('barcode');
+  [3,1,2,1,1,3,2,1,3,1,1,2,1,3,1,2,2,1,1,3,1,2,1,1,3,2,1,2,1,3,1,1,2,3,1,2,1,1,3,1].forEach(function (w) {
+    var i = document.createElement('i'); i.style.width = w + 'px'; bc.appendChild(i);
+  });
+  document.getElementById('note-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    this.hidden = true;
+    document.getElementById('note-done').hidden = false;
+  });
+
+  /* ---------- palettes ---------- */
+  var P = {
+    ivory: { name: 'Ivory & Indigo',
+      light: ['#fefef6', '#f3f4ee', '#102d56', '#536883', '#e2e5e3', '#c9cfd3', '#fefef6'],
+      dark:  ['#102d56', '#0c2546', '#fefef6', '#9cbed3', '#24446b', '#39587d', '#102d56'],
+      sw: { light: ['#9cbed3', '#fefef6', '#102d56'], dark: ['#9cbed3', '#102d56', '#fefef6'] } },
+    paper:   { name: 'Paper',          light: ['#FFFFFF','#F7F8FA','#111111','#5C6268','#E7E7E7','#D6D8DB','#FFFFFF'], dark: ['#131417','#0E0F11','#F1F1EF','#A3A8AE','#25272B','#33363B','#131417'], acc: ['#6F96CC','#9DBDE6'] },
+    sage:    { name: 'Sage and mist',  light: ['#FBFCFA','#E6ECE7','#263330','#4F5D58','#DDE4DF','#C9D3CC','#FBFCFA'], dark: ['#1A211F','#131816','#E4EBE7','#AAB7B1','#2A3330','#37423E','#1A211F'], acc: ['#4F7D69','#8DBBA6'] },
+    dusk:    { name: 'Dusk',           light: ['#FAFBFD','#E3E8EF','#232B38','#4E5869','#DBE1EA','#C6CEDA','#FAFBFD'], dark: ['#1B212C','#141922','#E6EAF1','#A9B2C2','#2A3240','#37404F','#1B212C'], acc: ['#D98C5F','#E7A07A'] },
+    clay:    { name: 'Stone and clay', light: ['#FCFBF9','#EAE5DF','#2E2925','#5A524C','#E2DBD4','#D2C8BF','#FCFBF9'], dark: ['#211D1A','#191614','#EEE8E3','#B9AFA7','#332D28','#413933','#211D1A'], acc: ['#A8636C','#D9969E'] },
+    tide:    { name: 'Tide',           light: ['#FAFCFD','#E1EAEE','#1F2E35','#4A5C64','#D7E2E7','#C1D0D7','#FAFCFD'], dark: ['#172024','#11181B','#E2ECEF','#A6B8BF','#26343A','#33434A','#172024'], acc: ['#3D7D92','#7FBACB'] },
+    lilac:   { name: 'Lilac fog',      light: ['#FCFBFD','#E9E5EF','#2B2733','#575062','#E0DBE7','#CEC7D8','#FCFBFD'], dark: ['#1D1A22','#16141A','#ECE8F1','#B5AEBF','#2F2A36','#3D3745','#1D1A22'], acc: ['#7D6B9A','#B3A3D0'] },
+    sunrise: { name: 'Sunrise',        light: ['#FFFDF8','#EFE8DA','#2F2A20','#5C5444','#E7DFCE','#D8CDB7','#FFFDF8'], dark: ['#201C15','#18150F','#F0EBE0','#BDB4A3','#332D22','#423A2C','#201C15'], acc: ['#9C7124','#E2B868'] }
+  };
+  var VARS = ['--bg', '--sunk', '--ink', '--ink2', '--line', '--line2', '--on-ink'];
+  var root = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  var state = { theme: 'ivory', dark: null };
+  try { var saved = JSON.parse(localStorage.getItem('kc-palette') || 'null'); if (saved && P[saved.theme]) state = saved; } catch (e) {}
+
+  function systemDark() {
+    var t = root.getAttribute('data-theme');
+    if (t === 'dark') return true; if (t === 'light') return false;
+    return !!(mq && mq.matches);
+  }
+  function isDark() { return state.dark === null ? systemDark() : state.dark; }
+  function swatch(k, dark) {
+    var p = P[k]; if (p.sw) return p.sw[dark ? 'dark' : 'light'];
+    var t = dark ? p.dark : p.light; return [p.acc[dark ? 1 : 0], t[0], t[2]];
+  }
+  function apply() {
+    var dark = isDark();
+    if (state.theme === 'ivory' && state.dark === null) {
+      VARS.forEach(function (v) { root.style.removeProperty(v); });
+      root.style.removeProperty('color-scheme');
+    } else {
+      var vals = P[state.theme][dark ? 'dark' : 'light'];
+      VARS.forEach(function (v, i) { root.style.setProperty(v, vals[i]); });
+      root.style.setProperty('color-scheme', dark ? 'dark' : 'light');
+    }
+    renderChips(dark);
+    document.getElementById('mode-btn').setAttribute('aria-pressed', dark ? 'true' : 'false');
+    document.getElementById('mode-label').textContent = dark ? 'On' : 'Off';
+    try { localStorage.setItem('kc-palette', JSON.stringify(state)); } catch (e) {}
+  }
+  function renderChips(dark) {
+    var box = document.getElementById('chips');
+    var focused = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.pick : null;
+    box.textContent = '';
+    Object.keys(P).forEach(function (k) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'pchip'; b.id = 'chip-' + k; b.dataset.pick = k;
+      b.setAttribute('aria-pressed', k === state.theme ? 'true' : 'false');
+      var dots = document.createElement('span'); dots.className = 'dots'; dots.setAttribute('aria-hidden', 'true');
+      swatch(k, dark).forEach(function (c) { var i = document.createElement('i'); i.style.background = c; dots.appendChild(i); });
+      b.appendChild(dots); b.appendChild(document.createTextNode(P[k].name));
+      b.addEventListener('click', function () { state.theme = k; apply(); });
+      box.appendChild(b);
+      if (focused === k) b.focus();
+    });
+  }
+  var fab = document.getElementById('fab'), panel = document.getElementById('palette-panel');
+  fab.addEventListener('click', function () {
+    var open = panel.hidden; panel.hidden = !open; fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !panel.hidden) { panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); fab.focus(); }
+  });
+  document.getElementById('mode-btn').addEventListener('click', function () { state.dark = !isDark(); apply(); });
+  if (mq && mq.addEventListener) mq.addEventListener('change', apply);
+  new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  apply();
+})();
+</script>
+</body>
+</html>
