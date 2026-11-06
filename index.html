@@ -113,6 +113,21 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 .dish:hover .dish-name { text-decoration: underline; text-underline-offset: 4px; }
 .menu-check { border-top: 1px dashed var(--ink); padding-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
 
+
+/* mains overview */
+.mains-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 32px; border-top: 1px solid var(--ink); padding-top: 28px; }
+.pcard { display: flex; flex-direction: column; gap: 12px; text-decoration: none; height: 100%; }
+.pcard-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 12px; border: 1px solid var(--line); background: var(--sunk); }
+.pcard-img img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 600ms cubic-bezier(.16,1,.3,1); }
+.pcard:hover .pcard-img img { transform: scale(1.03); }
+.pcard-meta { display: flex; justify-content: space-between; gap: 12px; padding-top: 4px; }
+.pcard-title { font: 400 32px var(--display); letter-spacing: -0.035em; line-height: 1.05; }
+.pcard-desc { font-size: 15px; line-height: 1.6; color: var(--ink2); }
+.pcard-go { margin-top: auto; padding-top: 6px; font-size: 13px; display: inline-flex; gap: 6px; align-items: center; }
+.pcard-go span { transition: transform 240ms cubic-bezier(.16,1,.3,1); }
+.pcard:hover .pcard-go span { transform: translateX(4px); }
+.pcard:hover .pcard-title { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+
 /* starters chapters */
 .spread { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .spread .big { grid-column: span 2; aspect-ratio: 3 / 2; }
@@ -192,7 +207,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
     <a class="brand" href="#home"><i aria-hidden="true">K</i>Katrina Chen</a>
     <nav class="primary" aria-label="Primary">
       <a href="#starters" data-nav="starters">Starters</a>
-      <a href="#mindless" data-nav="mains">Mains</a>
+      <a href="#mains" data-nav="mains">Mains</a>
       <a href="#desserts" data-nav="desserts">Desserts</a>
       <a href="#beverages" data-nav="beverages">Beverages</a>
       <a href="#check" data-nav="check">The Check</a>
@@ -218,7 +233,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
       </section>
 
       <section class="course">
-        <a class="course-head" href="#mindless"><span class="eyebrow">Projects</span><h2>Mains</h2></a>
+        <a class="course-head" href="#mains"><span class="eyebrow">Projects</span><h2>Mains</h2></a>
         <a class="dish" href="#mindless"><span class="dish-line"><span class="dish-name">Mindless</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A design concept for a calm AI day planner that maps your errands into one route</span></a>
         <a class="dish" href="#quizzer"><span class="dish-line"><span class="dish-name">Quizzer</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A design concept for a Chrome side panel that turns any reading into an adaptive quiz</span></a>
         <a class="dish" href="#noted"><span class="dish-line"><span class="dish-name">Noted</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A design concept for a side-panel notepad that clips and annotates as you browse</span></a>
@@ -275,7 +290,45 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
       <div class="main"><div class="spread"><div class="ph big">[Cornell photo]</div><div class="stack"><div class="ph">[Photo]</div><div class="ph">[Photo]</div></div></div></div>
     </section>
 
-    <a class="btn end" href="#mindless">Next course: Mains →</a>
+    <a class="btn end" href="#mains">Next course: Mains →</a>
+  </div>
+</section>
+
+<!-- MAINS -->
+<section data-page="mains" class="gut" hidden>
+  <div class="wrap page" style="gap:56px">
+    <a class="eyebrow back" href="#home" style="margin-bottom:-24px">← Menu</a>
+    <section class="split hero">
+      <div class="main">
+        <span class="eyebrow">Projects</span>
+        <h1 class="h1">Mains</h1>
+        <p class="lede">Three UI design concepts, each built with Claude Code. Pick one to see how it was made.</p>
+      </div>
+    </section>
+    <ul class="mains-grid">
+      <li><a class="pcard" href="#mindless">
+        <span class="pcard-img"><img src="img/desktop-plan.png" alt="Mindless plan screen with an ordered list of the day’s tasks" width="1440" height="920" loading="lazy"></span>
+        <span class="pcard-meta"><span class="eyebrow">01 · Web app</span><span class="eyebrow">Still cooking</span></span>
+        <span class="pcard-title">Mindless</span>
+        <span class="pcard-desc">A calm AI day planner that maps your errands into one route.</span>
+        <span class="pcard-go">View project <span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a class="pcard" href="#quizzer">
+        <span class="pcard-img"><img src="img/quizzer-preview.jpg" alt="Quizzer side panel quizzing a highlighted passage on a web page" width="1200" height="759" loading="lazy"></span>
+        <span class="pcard-meta"><span class="eyebrow">02 · Chrome extension</span><span class="eyebrow">A weekend</span></span>
+        <span class="pcard-title">Quizzer</span>
+        <span class="pcard-desc">A side panel that turns any reading into an endless, adaptive quiz.</span>
+        <span class="pcard-go">View project <span aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a class="pcard" href="#noted">
+        <span class="pcard-img"><img src="img/noted-hero.png" alt="Noted open beside a lecture page, with typed notes and a clipped paragraph" width="1600" height="1153" loading="lazy"></span>
+        <span class="pcard-meta"><span class="eyebrow">03 · Chrome extension</span><span class="eyebrow">A weekend</span></span>
+        <span class="pcard-title">Noted</span>
+        <span class="pcard-desc">A side-panel notepad that clips and annotates as you browse.</span>
+        <span class="pcard-go">View project <span aria-hidden="true">→</span></span>
+      </a></li>
+    </ul>
+    <a class="btn end" href="#desserts">Next course: Desserts →</a>
   </div>
 </section>
 
@@ -283,7 +336,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 <section data-page="mindless" class="gut" hidden>
   <div class="wrap page">
     <div class="toprow">
-      <a class="eyebrow back" href="#home">← Menu</a>
+      <a class="eyebrow back" href="#mains">← Mains</a>
       <div class="seg" role="group" aria-label="Mains"><a href="#mindless" aria-current="page">Mindless</a><a href="#quizzer">Quizzer</a><a href="#noted">Noted</a></div>
     </div>
     <section class="split hero">
@@ -350,7 +403,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 <section data-page="quizzer" class="gut" hidden>
   <div class="wrap page">
     <div class="toprow">
-      <a class="eyebrow back" href="#home">← Menu</a>
+      <a class="eyebrow back" href="#mains">← Mains</a>
       <div class="seg" role="group" aria-label="Mains"><a href="#mindless">Mindless</a><a href="#quizzer" aria-current="page">Quizzer</a><a href="#noted">Noted</a></div>
     </div>
     <section class="split hero">
@@ -415,7 +468,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 <section data-page="noted" class="gut" hidden>
   <div class="wrap page">
     <div class="toprow">
-      <a class="eyebrow back" href="#home">← Menu</a>
+      <a class="eyebrow back" href="#mains">← Mains</a>
       <div class="seg" role="group" aria-label="Mains"><a href="#mindless">Mindless</a><a href="#quizzer">Quizzer</a><a href="#noted" aria-current="page">Noted</a></div>
     </div>
     <section class="split hero">
@@ -574,7 +627,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
         <div style="display:flex;flex-direction:column;gap:4px">
           <div style="display:flex;gap:10px;text-transform:uppercase;color:var(--ink2)"><span style="width:18px">Qty</span><span style="flex:1;padding-left:10px">Item</span><span>Served</span></div>
           <a class="r-row" href="#starters"><span style="width:18px">1</span><span>Starters</span><span class="leader" aria-hidden="true"></span><span>About</span></a>
-          <a class="r-row" href="#mindless"><span style="width:18px">1</span><span>Mains</span><span class="leader" aria-hidden="true"></span><span>3 projects</span></a>
+          <a class="r-row" href="#mains"><span style="width:18px">1</span><span>Mains</span><span class="leader" aria-hidden="true"></span><span>3 projects</span></a>
           <a class="r-row" href="#desserts"><span style="width:18px">1</span><span>Desserts</span><span class="leader" aria-hidden="true"></span><span>Hobbies</span></a>
           <a class="r-row" href="#beverages"><span style="width:18px">1</span><span>Beverages</span><span class="leader" aria-hidden="true"></span><span>Blog</span></a>
         </div>
@@ -656,7 +709,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 
   /* ---------- routing ---------- */
   var pages = document.querySelectorAll('[data-page]');
-  var navMap = { starters: 'starters', mindless: 'mains', quizzer: 'mains', noted: 'mains', desserts: 'desserts', beverages: 'beverages', check: 'check' };
+  var navMap = { starters: 'starters', mains: 'mains', mindless: 'mains', quizzer: 'mains', noted: 'mains', desserts: 'desserts', beverages: 'beverages', check: 'check' };
   var known = {}; pages.forEach(function (p) { known[p.dataset.page] = true; });
   function route() {
     var r = location.hash.replace('#', '') || 'home';
