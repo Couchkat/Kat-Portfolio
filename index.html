@@ -156,6 +156,15 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 .post .meta { font: 400 11.5px var(--mono); color: var(--ink2); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .posts li { border-top: 1px solid var(--line); border-bottom: none; }
 
+/* beverages notes */
+.notes { list-style: none; margin: 0; padding: 0; }
+.note { display: flex; flex-direction: column; gap: 10px; padding: 0 0 24px; border-bottom: 1px solid var(--line); }
+.note + .note { padding-top: 24px; }
+.note-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
+.note-kind { display: inline-flex; align-items: center; gap: 8px; }
+.note-kind i { width: 6px; height: 6px; border-radius: 50%; background: #9cbed3; }
+.note-body { margin: 0; max-width: 640px; font: 400 clamp(22px, 2.6vw, 28px) var(--display); line-height: 1.3; letter-spacing: -0.02em; text-wrap: pretty; }
+
 /* check */
 .band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--sunk); padding-block: 56px; }
 .receipt { width: 100%; max-width: 540px; margin: 0 auto; }
@@ -248,7 +257,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 
       <section class="course">
         <a class="course-head" href="#beverages"><span class="eyebrow">Notes &amp; rants</span><h2>Beverages</h2></a>
-        <a class="dish" href="#beverages"><span class="dish-line"><span class="dish-name">Coming soon</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Hot, cold and seasonal posts, still brewing</span></a>
+        <a class="dish" href="#beverages"><span class="dish-line"><span class="dish-name">Seasonal note</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Finally done with internship recruitment, been such a soul-sucking journey</span></a>
       </section>
 
       <div class="menu-check">
@@ -595,12 +604,14 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
         <div class="ruled" style="display:flex;flex-direction:column;gap:4px;padding-top:12px"><span class="eyebrow">Seasonal</span><span style="font-size:15px">Posts tied to a moment: a semester, a project, an event</span></div>
       </aside>
     </section>
-    <section class="split ruled" style="align-items:center">
-      <span class="eyebrow side">On the stove</span>
-      <div class="main" style="gap:8px">
-        <strong style="font:400 clamp(30px,4vw,40px) var(--display);letter-spacing:-0.04em">Coming soon</strong>
-        <p class="copy">The first posts are still brewing. Check back for hot, cold and seasonal posts.</p>
-      </div>
+    <section class="split ruled">
+      <span class="eyebrow side">Latest pours</span>
+      <ol class="main notes">
+        <li class="note">
+          <span class="note-meta"><span class="eyebrow note-kind"><i aria-hidden="true"></i>Seasonal</span><time class="eyebrow" datetime="2026-11-07">Nov 7, 2026</time></span>
+          <p class="note-body">Finally done with internship recruitment, been such a soul-sucking journey.</p>
+        </li>
+      </ol>
     </section>
     <a class="btn end" href="#check">Ready for the check →</a>
   </div>
