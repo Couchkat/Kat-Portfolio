@@ -56,6 +56,7 @@ nav.primary .ind { background: var(--sunk); }
 
 .page { display: flex; flex-direction: column; gap: 64px; padding-top: 40px; padding-bottom: 120px; }
 .page > .back { margin-bottom: -40px; }
+[id^="sec-"] { scroll-margin-top: 24px; }
 .split { display: flex; flex-wrap: wrap; gap: 32px 72px; }
 .side { flex: 1 1 260px; max-width: 300px; display: flex; flex-direction: column; gap: 12px; }
 .main { flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
@@ -238,8 +239,8 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 
       <section class="course">
         <a class="course-head" href="#starters"><span class="eyebrow">About &amp; experience</span><h2>Starters</h2></a>
-        <a class="dish" href="#starters"><span class="dish-line"><span class="dish-name">The Philadelphia Original</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Where the curiosity started</span></a>
-        <a class="dish" href="#starters"><span class="dish-line"><span class="dish-name">Tufts → Cornell Dyson</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A transfer, a new major and a Data Science minor</span></a>
+        <a class="dish" href="#philadelphia"><span class="dish-line"><span class="dish-name">The Philadelphia Original</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Where the curiosity started</span></a>
+        <a class="dish" href="#tufts"><span class="dish-line"><span class="dish-name">Tufts → Cornell Dyson</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A transfer, a new major and a Data Science minor</span></a>
       </section>
 
       <section class="course">
@@ -251,14 +252,14 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 
       <section class="course">
         <a class="course-head" href="#desserts"><span class="eyebrow">Interests &amp; hobbies</span><h2>Desserts</h2></a>
-        <a class="dish" href="#desserts"><span class="dish-line"><span class="dish-name">Digital illustration</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Portraits, people and characters</span></a>
-        <a class="dish" href="#desserts"><span class="dish-line"><span class="dish-name">Stargazing &amp; space tech</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A long-time pull toward space</span></a>
-        <a class="dish" href="#desserts"><span class="dish-line"><span class="dish-name">Roblox</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Building and exploring Roblox worlds</span></a>
+        <a class="dish" href="#illustration"><span class="dish-line"><span class="dish-name">Digital illustration</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Portraits, people and characters</span></a>
+        <a class="dish" href="#stargazing"><span class="dish-line"><span class="dish-name">Stargazing &amp; space tech</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">A long-time pull toward space</span></a>
+        <a class="dish" href="#roblox"><span class="dish-line"><span class="dish-name">Roblox</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Building and exploring Roblox worlds</span></a>
       </section>
 
       <section class="course">
         <a class="course-head" href="#beverages"><span class="eyebrow">Notes &amp; rants</span><h2>Beverages</h2></a>
-        <a class="dish" href="#beverages"><span class="dish-line"><span class="dish-name">Oreo McFlurry</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Finally done with internship recruitment, been such a soul-sucking journey</span></a>
+        <a class="dish" href="#oreo-mcflurry"><span class="dish-line"><span class="dish-name">Oreo McFlurry</span><span class="leader" aria-hidden="true"></span></span><span class="dish-desc">Finally done with internship recruitment, been such a soul-sucking journey</span></a>
       </section>
 
       <div class="menu-check">
@@ -287,15 +288,15 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
       <div class="ph side" style="aspect-ratio:4/5;display:flex">[Portrait]</div>
     </section>
 
-    <section class="split ruled" style="align-items:center">
+    <section class="split ruled" id="sec-philadelphia" style="align-items:center">
       <div class="side"><span class="eyebrow">01 / Origin</span><h2 class="h2">Philadelphia</h2><p class="copy">Where I grew up, surrounded by family, and where the curiosity started.</p></div>
       <div class="main"><div class="spread"><div class="ph big">[Philly photo]</div><div class="stack"><div class="ph">[Photo]</div><div class="ph">[Photo]</div></div></div></div>
     </section>
-    <section class="split ruled" style="align-items:center">
+    <section class="split ruled" id="sec-tufts" style="align-items:center">
       <div class="side"><span class="eyebrow">02 / First pour</span><h2 class="h2">Tufts University</h2><p class="copy">Mathematics and Computer Science. I transferred to Cornell for Dyson’s mix of business and data.</p></div>
       <div class="main"><div class="spread"><div class="ph big">[Tufts photo]</div><div class="stack"><div class="ph">[Photo]</div><div class="ph">[Photo]</div></div></div></div>
     </section>
-    <section class="split ruled" style="align-items:center">
+    <section class="split ruled" id="sec-cornell" style="align-items:center">
       <div class="side"><span class="eyebrow">03 / House special</span><h2 class="h2">Cornell Dyson</h2><p class="copy">Applied Economics &amp; Management, minoring in Data Science. Class of 2028.</p></div>
       <div class="main"><div class="spread"><div class="ph big">[Cornell photo]</div><div class="stack"><div class="ph">[Photo]</div><div class="ph">[Photo]</div></div></div></div>
     </section>
@@ -557,7 +558,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
       </div>
     </section>
 
-    <section class="split ruled" data-shelf-panel="art">
+    <section class="split ruled" id="sec-shelves" data-shelf-panel="art">
       <div class="side"><span class="eyebrow">Top shelf</span><h2 class="h2">Digital illustration</h2><p class="copy">Mostly portraits, people and characters.</p><span class="chip"><i aria-hidden="true"></i>Made in Procreate</span></div>
       <div class="main case">
         <figure><div class="ph">[Artwork 1]</div><figcaption><span>[Piece title]</span><span>01</span></figcaption></figure>
@@ -579,9 +580,9 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
     <section class="split ruled" data-shelf-panel="roblox" hidden>
       <div class="side"><span class="eyebrow">Bottom shelf</span><h2 class="h2">Roblox</h2><p class="copy">I build my own Roblox worlds and play plenty of other people’s.</p><span class="chip"><i aria-hidden="true"></i>Games</span></div>
       <div class="main case">
-        <figure><div class="ph">[Game screenshot]</div><figcaption><span>[World or game name]</span><span>01</span></figcaption></figure>
-        <figure><div class="ph">[Game screenshot]</div><figcaption><span>[World or game name]</span><span>02</span></figcaption></figure>
-        <figure><div class="ph">[Build in progress]</div><figcaption><span>[Caption]</span><span>03</span></figcaption></figure>
+        <figure><img class="shot" src="img/storage-hunters.jpg" alt="Kat’s avatar in Storage Hunters at night outside a shop" width="1200" height="833" loading="lazy"><figcaption><span>Storage Hunters</span><span>01</span></figcaption></figure>
+        <figure><img class="shot" src="img/ride-a-mob.jpg" alt="Kat’s avatar riding a mob in Ride a Mob" width="1200" height="833" loading="lazy"><figcaption><span>Ride a Mob</span><span>02</span></figcaption></figure>
+        <figure><img class="shot" src="img/runaways.jpg" alt="Kat’s avatar in the Runaways lobby" width="1200" height="833" loading="lazy"><figcaption><span>Runaways</span><span>03</span></figcaption></figure>
       </div>
     </section>
 
@@ -608,7 +609,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
     <section class="split ruled">
       <span class="eyebrow side">Latest pours</span>
       <ol class="main notes">
-        <li class="note">
+        <li class="note" id="sec-oreo-mcflurry">
           <span class="note-meta"><span class="eyebrow note-kind"><i aria-hidden="true"></i>Seasonal</span><time class="eyebrow" datetime="2026-11-07">Nov 7, 2026</time></span>
           <h2 class="note-title">Oreo McFlurry</h2>
           <p class="note-body">Finally done with internship recruitment, been such a soul-sucking journey.</p>
@@ -720,13 +721,34 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
   var mains = ['mindless', 'quizzer', 'noted'];
   var lastRoute = null;
 
+  var shelfBtns = document.querySelectorAll('[data-shelf]');
+  function selectShelf(key, animate) {
+    var picked = null;
+    shelfBtns.forEach(function (x) { var on = x.dataset.shelf === key; x.setAttribute('aria-pressed', on ? 'true' : 'false'); if (on) picked = x; });
+    document.querySelectorAll('[data-shelf-panel]').forEach(function (p) { p.hidden = p.dataset.shelfPanel !== key; });
+    if (picked && animate) moveInd(picked.parentNode, picked, true);
+  }
+
   /* ---------- routing ---------- */
   var pages = document.querySelectorAll('[data-page]');
   var navMap = { starters: 'starters', mains: 'mains', mindless: 'mains', quizzer: 'mains', noted: 'mains', desserts: 'desserts', beverages: 'beverages', check: 'check' };
   var known = {}; pages.forEach(function (p) { known[p.dataset.page] = true; });
+  var spots = {
+    philadelphia: { page: 'starters', el: 'sec-philadelphia' },
+    tufts: { page: 'starters', el: 'sec-tufts' },
+    cornell: { page: 'starters', el: 'sec-cornell' },
+    illustration: { page: 'desserts', el: 'sec-shelves', shelf: 'art' },
+    stargazing: { page: 'desserts', el: 'sec-shelves', shelf: 'stars' },
+    roblox: { page: 'desserts', el: 'sec-shelves', shelf: 'roblox' },
+    'oreo-mcflurry': { page: 'beverages', el: 'sec-oreo-mcflurry' }
+  };
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function route() {
     var r = location.hash.replace('#', '') || 'home';
+    var spot = spots[r] || null;
+    if (spot) r = spot.page;
     if (!known[r]) r = 'home';
+    if (spot && spot.shelf) selectShelf(spot.shelf, false);
     pages.forEach(function (p) { p.hidden = p.dataset.page !== r; });
     document.body.dataset.route = r;
     document.querySelectorAll('[data-nav]').forEach(function (a) {
@@ -746,18 +768,17 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
       }
     });
     lastRoute = r;
+    if (spot) {
+      var target = document.getElementById(spot.el);
+      if (target) requestAnimationFrame(function () { target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); });
+    }
   }
   window.addEventListener('hashchange', route);
   route();
 
   /* ---------- desserts shelves ---------- */
-  var shelfBtns = document.querySelectorAll('[data-shelf]');
   shelfBtns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      shelfBtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      moveInd(b.parentNode, b, true);
-      document.querySelectorAll('[data-shelf-panel]').forEach(function (p) { p.hidden = p.dataset.shelfPanel !== b.dataset.shelf; });
-    });
+    b.addEventListener('click', function () { selectShelf(b.dataset.shelf, true); });
   });
 
   /* ---------- beverages filter ---------- */
