@@ -14,16 +14,15 @@ img{max-width:100%}
 <style>
 /* Layout: paper-editorial site in menu courses; a centered menu card on a sunk table for home, asymmetric ruled splits for subpages */
 :root {
-  --bg: #fefef6; --sunk: #f3f4ee; --ink: #102d56; --ink2: #536883;
-  --line: #e2e5e3; --line2: #c9cfd3; --on-ink: #fefef6;
+  --bg: #F4F5F6; --sunk: #E9EBEE; --ink: #1E242B; --ink2: #5B6570; --line: #DDE1E5; --line2: #C8CED4; --on-ink: #F4F5F6; --accent: #7A8EA3;
   --display: 'Young Serif', Georgia, 'Times New Roman', serif;
   --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #102d56; --sunk: #0c2546; --ink: #fefef6; --ink2: #9cbed3; --line: #24446b; --line2: #39587d; --on-ink: #102d56; color-scheme: dark } }
+  --bg: #16191D; --sunk: #101215; --ink: #E6E9ED; --ink2: #99A3AE; --line: #262B31; --line2: #343A42; --on-ink: #16191D; --accent: #8FA3B8; color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #102d56; --sunk: #0c2546; --ink: #fefef6; --ink2: #9cbed3; --line: #24446b; --line2: #39587d; --on-ink: #102d56; color-scheme: dark }
+  --bg: #16191D; --sunk: #101215; --ink: #E6E9ED; --ink2: #99A3AE; --line: #262B31; --line2: #343A42; --on-ink: #16191D; --accent: #8FA3B8; color-scheme: dark }
 
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; transition: background 300ms ease, color 300ms ease; }
 body[data-route="home"] { background: var(--sunk); }
@@ -142,7 +141,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 .case figcaption { border-top: 1px solid var(--line); padding-top: 8px; color: var(--ink); font-size: 14px; }
 .case figcaption span + span { font: 400 11px var(--mono); color: var(--ink2); }
 .chip { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line2); font-size: 11.5px; }
-.chip i { width: 6px; height: 6px; border-radius: 50%; background: #9cbed3; }
+.chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 
 /* beverages */
 .feature { display: flex; flex-wrap: wrap; gap: 28px 48px; text-decoration: none; }
@@ -163,7 +162,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 .note + .note { padding-top: 24px; }
 .note-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
 .note-kind { display: inline-flex; align-items: center; gap: 8px; }
-.note-kind i { width: 6px; height: 6px; border-radius: 50%; background: #9cbed3; }
+.note-kind i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .note-title { margin: 4px 0 0; font: 400 clamp(28px, 3.4vw, 36px) var(--display); line-height: 1.1; letter-spacing: -0.035em; }
 .note-body { margin: 0; max-width: 640px; font-size: 16px; line-height: 1.7; color: var(--ink2); text-wrap: pretty; }
 
@@ -183,7 +182,7 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 .paper input, .paper textarea { font: 400 13px var(--body); color: var(--ink); background: var(--bg); border: none; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line2); letter-spacing: 0; text-transform: none; }
 .paper input { height: 42px; padding: 0 12px; }
 .paper textarea { padding: 10px 12px; resize: vertical; }
-.paper input:focus, .paper textarea:focus { outline: none; box-shadow: inset 0 0 0 1px var(--ink), 0 0 0 4px color-mix(in srgb, #9cbed3 35%, transparent); }
+.paper input:focus, .paper textarea:focus { outline: none; box-shadow: inset 0 0 0 1px var(--ink), 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent); }
 .stamp { padding: 4px 16px; border: 1.5px solid var(--ink); border-radius: 6px; font-size: 20px; letter-spacing: 0.24em; transform: rotate(-8deg); }
 .barcode { display: flex; align-items: stretch; height: 40px; gap: 2px; }
 .barcode i { background: var(--ink); }
@@ -830,22 +829,19 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
 
   /* ---------- palettes ---------- */
   var P = {
-    ivory: { name: 'Ivory & Indigo',
-      light: ['#fefef6', '#f3f4ee', '#102d56', '#536883', '#e2e5e3', '#c9cfd3', '#fefef6'],
-      dark:  ['#102d56', '#0c2546', '#fefef6', '#9cbed3', '#24446b', '#39587d', '#102d56'],
-      sw: { light: ['#9cbed3', '#fefef6', '#102d56'], dark: ['#9cbed3', '#102d56', '#fefef6'] } },
+    fog:     { name: 'Fog',            light: ['#F4F5F6','#E9EBEE','#1E242B','#5B6570','#DDE1E5','#C8CED4','#F4F5F6'], dark: ['#16191D','#101215','#E6E9ED','#99A3AE','#262B31','#343A42','#16191D'], acc: ['#7A8EA3','#8FA3B8'] },
+    oat:     { name: 'Oat',            light: ['#F3F1EC','#E8E4DD','#24211D','#655F57','#DDD8CF','#C9C2B7','#F3F1EC'], dark: ['#1B1A18','#141311','#ECE8E1','#A8A196','#2D2B27','#3B3833','#1B1A18'], acc: ['#8E8577','#B5AC9E'] },
     paper:   { name: 'Paper',          light: ['#FFFFFF','#F7F8FA','#111111','#5C6268','#E7E7E7','#D6D8DB','#FFFFFF'], dark: ['#131417','#0E0F11','#F1F1EF','#A3A8AE','#25272B','#33363B','#131417'], acc: ['#6F96CC','#9DBDE6'] },
     sage:    { name: 'Sage and mist',  light: ['#FBFCFA','#E6ECE7','#263330','#4F5D58','#DDE4DF','#C9D3CC','#FBFCFA'], dark: ['#1A211F','#131816','#E4EBE7','#AAB7B1','#2A3330','#37423E','#1A211F'], acc: ['#4F7D69','#8DBBA6'] },
     dusk:    { name: 'Dusk',           light: ['#FAFBFD','#E3E8EF','#232B38','#4E5869','#DBE1EA','#C6CEDA','#FAFBFD'], dark: ['#1B212C','#141922','#E6EAF1','#A9B2C2','#2A3240','#37404F','#1B212C'], acc: ['#D98C5F','#E7A07A'] },
     clay:    { name: 'Stone and clay', light: ['#FCFBF9','#EAE5DF','#2E2925','#5A524C','#E2DBD4','#D2C8BF','#FCFBF9'], dark: ['#211D1A','#191614','#EEE8E3','#B9AFA7','#332D28','#413933','#211D1A'], acc: ['#A8636C','#D9969E'] },
     tide:    { name: 'Tide',           light: ['#FAFCFD','#E1EAEE','#1F2E35','#4A5C64','#D7E2E7','#C1D0D7','#FAFCFD'], dark: ['#172024','#11181B','#E2ECEF','#A6B8BF','#26343A','#33434A','#172024'], acc: ['#3D7D92','#7FBACB'] },
-    lilac:   { name: 'Lilac fog',      light: ['#FCFBFD','#E9E5EF','#2B2733','#575062','#E0DBE7','#CEC7D8','#FCFBFD'], dark: ['#1D1A22','#16141A','#ECE8F1','#B5AEBF','#2F2A36','#3D3745','#1D1A22'], acc: ['#7D6B9A','#B3A3D0'] },
-    sunrise: { name: 'Sunrise',        light: ['#FFFDF8','#EFE8DA','#2F2A20','#5C5444','#E7DFCE','#D8CDB7','#FFFDF8'], dark: ['#201C15','#18150F','#F0EBE0','#BDB4A3','#332D22','#423A2C','#201C15'], acc: ['#9C7124','#E2B868'] }
+    lilac:   { name: 'Lilac fog',      light: ['#FCFBFD','#E9E5EF','#2B2733','#575062','#E0DBE7','#CEC7D8','#FCFBFD'], dark: ['#1D1A22','#16141A','#ECE8F1','#B5AEBF','#2F2A36','#3D3745','#1D1A22'], acc: ['#7D6B9A','#B3A3D0'] }
   };
-  var VARS = ['--bg', '--sunk', '--ink', '--ink2', '--line', '--line2', '--on-ink'];
+  var VARS = ['--bg', '--sunk', '--ink', '--ink2', '--line', '--line2', '--on-ink', '--accent'];
   var root = document.documentElement;
   var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-  var state = { theme: 'ivory', dark: null };
+  var state = { theme: 'fog', dark: null };
   try { var saved = JSON.parse(localStorage.getItem('kc-palette') || 'null'); if (saved && P[saved.theme]) state = saved; } catch (e) {}
 
   function systemDark() {
@@ -855,16 +851,16 @@ figcaption { font-size: 13px; color: var(--ink2); display: flex; justify-content
   }
   function isDark() { return state.dark === null ? systemDark() : state.dark; }
   function swatch(k, dark) {
-    var p = P[k]; if (p.sw) return p.sw[dark ? 'dark' : 'light'];
+    var p = P[k];
     var t = dark ? p.dark : p.light; return [p.acc[dark ? 1 : 0], t[0], t[2]];
   }
   function apply() {
     var dark = isDark();
-    if (state.theme === 'ivory' && state.dark === null) {
+    if (state.theme === 'fog' && state.dark === null) {
       VARS.forEach(function (v) { root.style.removeProperty(v); });
       root.style.removeProperty('color-scheme');
     } else {
-      var vals = P[state.theme][dark ? 'dark' : 'light'];
+      var vals = P[state.theme][dark ? 'dark' : 'light'].concat(P[state.theme].acc[dark ? 1 : 0]);
       VARS.forEach(function (v, i) { root.style.setProperty(v, vals[i]); });
       root.style.setProperty('color-scheme', dark ? 'dark' : 'light');
     }
